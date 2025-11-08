@@ -7,11 +7,20 @@
     </head>
     <body>
         <div style="width: 100%">
-            <h1 style="width: 75%; margin: 60px auto; text-align: center; background-color: teal; padding: 20px;">JS Prompt Calculator</h1>
+            <h1
+                style="
+                    width: 75%;
+                    margin: 60px auto;
+                    text-align: center;
+                    background-color: teal;
+                    padding: 20px;
+                "
+            >
+                JS Prompt Calculator
+            </h1>
         </div>
         <script>
-            function calculation() {
-                let num2 = Number(prompt("Enter 2nd number: "));
+            function calculation(num2) {
                 switch (operator) {
                     case "+":
                         alert(`The sum is: ${num1 + num2}`);
@@ -29,26 +38,32 @@
                                       "2nd number should be not 0! Enter the 2nd number again: "
                                   )
                               )),
-                              alert(`The division is: ${num1 / num2}`))
+                              calculation(num2))
                             : alert(`The division is: ${num1 / num2}`);
                         break;
                 }
             }
             let num1 = Number(prompt("Enter 1st number: "));
             let operator = prompt("Enter an operator: '+' '-' '*' '/': ");
-            if (
-                operator == "+" ||
-                operator == "-" ||
-                operator == "*" ||
-                operator == "/"
-            ) {
-                calculation();
-            } else {
-                operator = prompt(
-                    "Enter a right operator again: '+' '-' '*' '/': "
-                );
-                calculation();
+            while (1) {
+                if (
+                    operator == "+" ||
+                    operator == "-" ||
+                    operator == "*" ||
+                    operator == "/"
+                ) {
+                    let num2 = Number(prompt("Enter 2nd number: "));
+                    calculation(num2);
+                    break;
+                } else {
+                    operator = prompt(
+                        "Enter a right operator again: '+' '-' '*' '/': "
+                    );
+                }
             }
+            // operator = prompt(
+            //     "Enter a right operator again: '+' '-' '*' '/': "
+            // );
         </script>
     </body>
 </html>
